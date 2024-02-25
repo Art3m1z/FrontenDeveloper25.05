@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>amoCRM Deals</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../styles/mainPageStyles.css">
+</head>
+<body>
+    <header>
+        <h1 class="text-center mt-3">amoCRM Deals</h1>
+    </header>
+    <main class="container mt-5">
+        <div id="pagination" class="btn-group mb-3" role="group">
+            <button type="button" id="overall" class="btn btn-secondary mx-1 btn-rounded" onclick="handlePaginationClick(5); checkActive('overall')">Overall</button>
+            <button type="button" class="btn btn-secondary mx-1" onclick="handlePaginationClick(2); checkActive('2')">2</button>
+            <button type="button" class="btn btn-secondary mx-1" onclick="handlePaginationClick(5); checkActive('5')">5</button>
+            <button type="button" class="btn btn-secondary mx-1 btn-rounded" onclick="handlePaginationClick(10); checkActive('10')">10</button>
+        </div>
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th>№</th>
+                    <th>ID</th>
+                    <th>Title <span onclick="sortByTitle('asc')">▲</span><span onclick="sortByTitle('desc')">▼</span></th>
+                    <th>Budget <span onclick="sortByBudget('asc')">▲</span><span onclick="sortByBudget('desc')">▼</span></th>
+                    <th>Created Date</th>
+                    <th>Updated Date</th>
+                    <th>Responsible user</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+        <div class="text-center" >
+            <button type="button" id="loadMore" class="btn btn-light mx-1 btn-rounded" onclick="updateDeals(5); disableButton()">Load more</button>
+        </div>    </main>
+    <script src="../js/mainPage.js"></script>
+    <script>
+         function checkActive(buttonId) {
+            if (buttonId === 'overall') {
+                document.getElementById('loadMore').style.display = 'inline-block';
+            } else {
+                document.getElementById('loadMore').style.display = 'none';
+            }
+        }
+        function disableButton() {
+            const button = document.getElementById('loadMore');
+            button.disabled = true;
+            setTimeout(() => {
+                button.disabled = false;
+            }, 500);
+        }
+    </script>
+</body>
+</html>
